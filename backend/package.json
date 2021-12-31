@@ -14,7 +14,8 @@
   "dependencies": {
     "apollo-server": "^3.5.0",
     "apollo-server-core": "^3.5.0",
-    "graphql": "^16.2.0"
+    "graphql": "^16.2.0",
+    "apollo-server-express": "^3.5.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.8.1",
