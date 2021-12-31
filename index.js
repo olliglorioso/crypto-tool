@@ -29,7 +29,7 @@ const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     });
     void (yield server.start());
     server.applyMiddleware({ app: app_1.default });
-    yield new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
+    yield new Promise(resolve => httpServer.listen({ port: process.env.PORT || 4000 }, resolve));
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 });
 startServer();
