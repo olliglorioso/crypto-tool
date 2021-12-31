@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:backend": "rm -rf index.js && rm -rf src && cd backend && npm run tsc && cp -r ./build/src .. && cp -r ./build/index.js .. && rm -rf build",
     "build:frontend": "rm -rf build && cd frontend && rm -rf build && npm run build && cp -r build ..",
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:frontend": "cd frontend && npm install && npm start",
+    "start:backend": "cd backend && npm install && npm run dev"
   },
   "repository": {
     "type": "git",
