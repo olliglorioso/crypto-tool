@@ -13,19 +13,15 @@ const get_1 = require("../requests/get");
 const helpers_1 = require("../utils/helpers");
 const typeGuards_1 = require("../tsUtils/typeGuards");
 const typeGuards_2 = require("../tsUtils/typeGuards");
-// This file has all queries.
 const queries = {
     all: (_root, args) => __awaiter(void 0, void 0, void 0, function* () {
         const startDate = (0, typeGuards_1.parseDate)(args.startDate);
         const endDate = (0, typeGuards_1.parseDate)(args.endDate);
-        // Fetch datas from the API with fetchOnRange-function.
         const data = yield (0, get_1.fetchOnRange)(startDate, endDate);
         const parsedData = (0, typeGuards_2.parseCoingeckoResponse)(data);
-        // Get the answers for the tasks with three different functions.
         const days = (0, helpers_1.downwardDays)(parsedData, startDate, endDate);
         const { date, volume } = (0, helpers_1.highestVolume)(parsedData, startDate, endDate);
         const { buy, sell } = (0, helpers_1.timeMachine)(parsedData, startDate, endDate);
-        // Store the answers in an object.
         const returnThis = { downwardDays: days, highestVolume: { date, volume }, timeMachine: { buy, sell } };
         return returnThis;
     })

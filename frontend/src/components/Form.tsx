@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import { SetDates } from "../tsutils/types";
 import styles from "./Form.styles";
 
-// This component is responsible to return the form.
 const Form = ({setDates}: {setDates: SetDates}): JSX.Element => {
-    // States for the button's color, current startDate, current endDate and errortext.
     const [buttonColor, setButtonColor] = useState("#3F51B5");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [errorText, setErrorText] = useState("");
 
     const handleSubmit = () => {
-        // This function is executed on button click. First validates the result and if everything is
-        // all right, submit.
         setErrorText("");
         if (endDate.length !== 10 || startDate.length !== 10) {
             setErrorText("Please enter valid dates.");
@@ -29,7 +25,6 @@ const Form = ({setDates}: {setDates: SetDates}): JSX.Element => {
         }
         setDates({startDate: startDate, endDate: endDate});
     };
-    // Return the form.
     return (
         <div style={styles.viewport}>
             <div style={styles.container}>

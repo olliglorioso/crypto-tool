@@ -4,14 +4,10 @@ import { ALL } from "../graphql/queries";
 import { Dates } from "../tsutils/types";
 import styles from "./Results.styles";
 
-// This component is responsible to return the results from the backend.
 const Results = ({dates}: {dates: Dates}): JSX.Element => {
-    // Initiate the query to get the data from the backend. Do not execute yet.
     const [fetch, resp] = useLazyQuery(ALL);
 
     useEffect(() => {
-        // If dates change when the form is submitted and the dates are valid, useEffect will execute the query to backend
-        // and the component will re-render if the returned data has changed.
         if (dates.endDate !== "" && dates.startDate !== "") {
             fetch({
                 variables: {
@@ -21,7 +17,6 @@ const Results = ({dates}: {dates: Dates}): JSX.Element => {
             });
         }
     }, [dates]);
-    // Check for errors/loading to alert the user.
     if (resp.loading || !resp.called || !resp.data || resp.error) {
         return (
             <div>
@@ -38,7 +33,6 @@ const Results = ({dates}: {dates: Dates}): JSX.Element => {
         );
     }
     const { downwardDays, highestVolume, timeMachine } = resp.data.all;
-    // Return.
     return (
         <div>
             <div style={styles.box}>

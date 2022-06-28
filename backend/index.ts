@@ -5,11 +5,9 @@ import typeDefs from './src/utils/typeDefs';
 import { createServer } from "http";
 import app from './src/utils/app';
 
-// Function that starts the server.
 const startServer = async () => {
 
     const httpServer = createServer(app);
-    // Create the Apollo server.
     const server = new ApolloServer({
         typeDefs,
         resolvers,
